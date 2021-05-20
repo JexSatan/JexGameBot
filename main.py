@@ -124,7 +124,7 @@ async def _(client, callback_query):
 				chat_id=callback_query.message.chat.id,
 				message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
 
-			await callback_query.message.reply_text("**{user} Zar Attı ** __{zar_at}__".format(user=user.mention, zar_at=zar_at)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
+			await callback_query.message.reply_text("**{user} Zar Attı ** __{zar_at}__".format(user=user.mention, zar_at=zar_t)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
 			return
 
 K_G.run() # Botumuzu Calıştıralım :)
