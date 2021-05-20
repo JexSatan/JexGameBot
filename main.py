@@ -113,4 +113,6 @@ async def _(client, callback_query):
 	zar_at=random.choice(ZAR_AT) # zar atalım
 	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
 	
+	c_q_d, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
+
 K_G.run() # Botumuzu Calıştıralım :)
