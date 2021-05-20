@@ -37,7 +37,7 @@ def button():
 async def _(client, message):
 	user = message.from_user # Kullanıcın Kimliğini Alalım
 
-	await message.reply_text(text="**Merhaba {}!**\n\n__Ben @JexSatan Tarafından Yapılmış Bir Oyun Botuyum__\n\n**Kodlarım=>** [Kodlarım](https://github.com/JexSatan/JexGameBot)\n Yeni Güncellemeler İçin Beklemede Kal Şuan için fazla oyunumuz yok :/ Şuan ki Oyun Komutu => /dc ve /zar".format(
+	await message.reply_text(text="**Merhaba {}!**\n\n__Ben @JexSatan Tarafından Yapılmış Bir Oyun Botuyum__\n\n**Kodlarım=>** [Kodlarım](https://github.com/JexSatan/JexGameBot)\n Yeni Güncellemeler İçin Beklemede Kal Şuan için fazla oyunumuz yok :/ Şuan ki Oyun Komutu => /dc ve /zarat".format(
 		user.mention, # Kullanıcı'nın Adı
 		),
 	disable_web_page_preview=True, # Etiketin Önizlemesi Olmaması İcin Kullanıyoruz

@@ -114,7 +114,7 @@ D_LİST = [
 	"Gece geç saatte yaptığın en utanç verici şey nedir?","Duş almadan en uzun süre ne kadar durdun?","Hiç sahte kimlik kullandın mı?","Kırmızı halıda beraber yürümek istediğin ünlü isim kim?","Gizli aşkın kim?"	
 ]
 
-ZAR_AT=[
+ZAR_AT = [
     "ATA ATA 1 ATTIN ŞANSINI SKM"
     "VAY 2 ATTIN EH İŞTE"
     "3?? FENA DEĞİLL"
