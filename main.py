@@ -3,6 +3,7 @@ import os
 import logging
 import random
 from sorular import D_LİST, C_LİST
+from zarat import ZAR_AT
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 # ============================ #
@@ -94,11 +95,41 @@ async def _(client, callback_query):
 		await callback_query.answer(text="Komutu Kullanan Kişi Sen Değilsin!!", show_alert=False)
 		return
 
+def d_or_c(user_id):
+	BUTTON = [[InlineKeyboardButton(text="Zar At", callback_data = " ".join(["zar_data",str(user_id)]))]]
+    return InlineKeyboardMarkup(BUTTON)
+
 # Zar Komutunu Oluşturalım
 @K_G.on_message(filters.command("zarat"))
 async def _(client, message):
 	user = message.from_user
 
-	app.send_dice("pyrogramlounge")
+    await message.reply_text(text="{}Zar Atmak İçin Bas".format(user.mention),
+	reply_markup=z_a_t(user.id)
+	)
 
+@K_G.on_callback_query()
+async def _(client, callback_query):
+	(zar_t)random.choice(ZAR_AT)
+	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
+
+	z_a_t, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
+
+	# Sorunun Sorulmasını İsteyen Kişinin Komutu Kullanan Kullanıcı Olup Olmadığını Kontrol Edelim
+	if str(user.id) == str(user_id):
+		# Kullanıcının Doğruluk Sorusu İstemiş İse Bu Kısım Calışır
+		if z_a_t == "zar_data":
+			await callback_query.answer(text="Zar Attınız", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
+			await client.delete_messages(
+				chat_id=callback_query.message.chat.id,
+				message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
+
+			await callback_query.message.reply_text("**{user}:** __{zar_t}__".format(user=user.mention, zar_t=zar_t)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
+			return
+
+# Buttonumuza Tıklayan Kisi Komut Calıştıran Kişi Değil İse Uyarı Gösterelim
+	else:
+		await callback_query.answer(text="Komutu Kullanan Kişi Sen Değilsin!!", show_alert=False)
+		return
+	
 K_G.run() # Botumuzu Calıştıralım :)
