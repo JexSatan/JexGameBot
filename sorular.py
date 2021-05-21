@@ -113,12 +113,3 @@ D_LİST = [
 	"Hiç yaşın hakkında yalan söyledin mi?","Telefonundan bir uygulamayı silmek zorunda olsan bu hangisi olurdu?",
 	"Gece geç saatte yaptığın en utanç verici şey nedir?","Duş almadan en uzun süre ne kadar durdun?","Hiç sahte kimlik kullandın mı?","Kırmızı halıda beraber yürümek istediğin ünlü isim kim?","Gizli aşkın kim?"	
 ]
-
-ZAR_AT = [
-    "ATA ATA 1 ATTIN ŞANSINI SKM"
-    "VAY 2 ATTIN EH İŞTE"
-    "3?? FENA DEĞİLL"
-    "OOOO 4 NE LA İYİSİN İYİ"
-    "KRALA BAK 5 ATTI AQ"
-    "BALA GÖTE 6 ATTI"
-]
