@@ -2,7 +2,8 @@
 import os
 import logging
 import random
-from sorular import D_LİST, C_LİST, ZAR_AT
+from sorular import D_LİST, C_LİST
+from zarat import ZAR_AT
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 # ============================ #
@@ -113,6 +114,18 @@ async def _(client, callback_query):
 	zar=random.choice(ZAR_AT) # zar atalım
 	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
 	
-	zar, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
+	zar_at, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
+
+	# Sorunun Sorulmasını İsteyen Kişinin Komutu Kullanan Kullanıcı Olup Olmadığını Kontrol Edelim
+	if str(user.id) == str(user_id):
+		# Kullanıcının Doğruluk Sorusu İstemiş İse Bu Kısım Calışır
+		if zar_at == "zar_data":
+			await callback_query.answer(text="Zar Attınız!!", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
+			await client.delete_messages(
+				chat_id=callback_query.message.chat.id,
+				message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
+
+			await callback_query.message.reply_text("**{user} Zar Attı :** __{zar}__".format(user=user.mention, zar=zar)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
+			return
 
 K_G.run() # Botumuzu Calıştıralım :)
