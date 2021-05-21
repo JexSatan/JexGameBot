@@ -101,6 +101,5 @@ async def _(client, message):
 	user = message.from_user
 
 	random.choice(ZAR_AT)
-		)
 
 K_G.run() # Botumuzu Calıştıralım :)
