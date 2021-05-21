@@ -95,9 +95,10 @@ async def _(client, callback_query):
 		await callback_query.answer(text="Komutu Kullanan Kişi Sen Değilsin!!", show_alert=False)
 		return
 
-def d_or_c(user_id):
+def z_a_t(user_id):
 	BUTTON = [[InlineKeyboardButton(text="Zar At", callback_data = " ".join(["zar_data",str(user_id)]))]]
-    return InlineKeyboardMarkup(BUTTON)
+    new_var = InlineKeyboardMarkup(BUTTON)
+    return new_var
 
 # Zar Komutunu Oluşturalım
 @K_G.on_message(filters.command("zarat"))
