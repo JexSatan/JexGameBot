@@ -95,17 +95,12 @@ async def _(client, callback_query):
 		await callback_query.answer(text="Komutu Kullanan Kişi Sen Değilsin!!", show_alert=False)
 		return
 
-def zar_at(user_id):
-	BUTTON = [[InlineKeyboardButton(text="Zar At", callback_data = " ".join(["zar_data",str(user_id)]))]]
-	return InlineKeyboardMarkup(BUTTON)
-
 # Zar Komutunu Oluşturalım
 @K_G.on_message(filters.command("zarat"))
 async def _(client, message):
 	user = message.from_user
 
-	await message.reply_text(text=random.choice(ZAR_AT).format(user.mention),
-		reply_markup=zar_at(user.id)
+	random.choice(ZAR_AT)
 		)
 
 K_G.run() # Botumuzu Calıştıralım :)
