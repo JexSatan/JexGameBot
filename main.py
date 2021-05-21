@@ -94,11 +94,37 @@ async def _(client, callback_query):
 		await callback_query.answer(text="Komutu Kullanan Kişi Sen Değilsin!!", show_alert=False)
 		return
 
+def zar_at(user_id):
+	BUTTON = [[InlineKeyboardButton(text="Zar At", callback_data = " ".join(["zar_data",str(user_id)]))]]
+	return InlineKeyboardMarkup(BUTTON)
+
+# zar Komutunu Oluşturalım
 @K_G.on_message(filters.command("zarat"))
 async def _(client, message):
 	user = message.from_user
 
-	random.choice(ZAR_AT)
+	await message.reply_text(text="{} Zar Atmak için bas".format(user.mention),
+		reply_markup=zar_at(user.id)
 		)
+
+# Buttonumuzu Yetkilendirelim
+@K_G.on_callback_query()
+async def _(client, callback_query):
+	zar=random.choice(ZAR_AT) # zar atalım
+	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
+	
+	zar_at, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
+
+# Sorunun Sorulmasını İsteyen Kişinin Komutu Kullanan Kullanıcı Olup Olmadığını Kontrol Edelim
+	if str(user.id) == str(user_id):
+		# Kullanıcının zar attıysa
+		if zar_at == "zar_data":
+			await callback_query.answer(text="Zar Attınız!!", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
+			await client.delete_messages(
+				chat_id=callback_query.message.chat.id,
+				message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
+
+			await callback_query.message.reply_text("**{user} Zar Attı ** __{zar}__".format(user=user.mention, zar=zar)) # Sonra Kullanıcıyı Etiketleyerek Attığı Zarı Gönderelim
+			return
 
 K_G.run() # Botumuzu Calıştıralım :)
