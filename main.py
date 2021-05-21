@@ -3,7 +3,6 @@ import os
 import logging
 import random
 from sorular import D_LİST, C_LİST
-from zarat import ZAR_AT
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 # ============================ #
@@ -100,6 +99,8 @@ async def _(client, callback_query):
 async def _(client, message):
 	user = message.from_user
 
-	random.choice(ZAR_AT)
+	await message.reply_text(text="“🎲”".format(user.mention),
+		reply_markup=zar_at(user.id)
+		)
 
 K_G.run() # Botumuzu Calıştıralım :)
