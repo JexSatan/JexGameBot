@@ -113,18 +113,6 @@ async def _(client, callback_query):
 	zar=random.choice(ZAR_AT) # zar atalım
 	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
 	
-	za, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
-
-# Sorunun Sorulmasını İsteyen Kişinin Komutu Kullanan Kullanıcı Olup Olmadığını Kontrol Edelim
-	if str(user.id) == str(user_id):
-		# Kullanıcının zar attıysa
-		if zar == "zar_data":
-			await callback_query.answer(text="Zar Attınız!!", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
-			await client.delete_messages(
-				chat_id=callback_query.message.chat.id,
-				message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
-
-			await callback_query.message.reply_text("**{user} Zar Attı ** __{zar}__".format(user=user.mention, zar=zar)) # Sonra Kullanıcıyı Etiketleyerek Attığı Zarı Gönderelim
-			return
+	zar, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
 
 K_G.run() # Botumuzu Calıştıralım :)
