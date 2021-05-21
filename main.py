@@ -99,8 +99,6 @@ async def _(client, callback_query):
 async def _(client, message):
 	user = message.from_user
 
-	await message.reply_text(text="“🎲”".format(user.mention),
-		reply_markup=zar_at(user.id)
-		)
+	app.send_dice("pyrogramlounge")
 
 K_G.run() # Botumuzu Calıştıralım :)
