@@ -113,12 +113,12 @@ async def _(client, callback_query):
 	zar=random.choice(ZAR_AT) # zar atalım
 	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
 	
-	zar_at, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
+	za, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
 
 # Sorunun Sorulmasını İsteyen Kişinin Komutu Kullanan Kullanıcı Olup Olmadığını Kontrol Edelim
 	if str(user.id) == str(user_id):
 		# Kullanıcının zar attıysa
-		if zar_at == "zar_data":
+		if zar == "zar_data":
 			await callback_query.answer(text="Zar Attınız!!", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
 			await client.delete_messages(
 				chat_id=callback_query.message.chat.id,
